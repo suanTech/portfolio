@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Suan Choi - Web Developer</title>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="header-container">
+        <header>
+          <div><a class="logo hoverable text-display">suan choi</a></div>
+          <nav>
+            <ul class="text-text-text-display">
+              <li><a href="#about" class="nav-link">ABOUT</a></li>
+              <li><a href="#about" class="nav-link">PROJECT</a></li>
+              <li><a href="#about" class="nav-link">BLOG</a></li>
+              <li><a href="#about" class="nav-link">CONTACT</a></li>
+            </ul>
+          </nav>
+          <div class="menu-btn hoverable">
+            <p>MENU</p>
+          </div>
+        </header>
+        <div class="mobile-nav">
+          <div class="menu-btn close hoverable">CLOSE</div>
+          <ul class="text-display">
+            <li class="hoverable">
+              <a href="/about" aria-label="Jump to about section" style="--i: 1"
+                >ABOUT</a
+              >
+            </li>
+            <li class="hoverable">
+              <a
+                href="/project"
+                aria-label="Jump to project section"
+                style="--i: 2"
+                >PROJECT</a
+              >
+            </li>
+            <li class="hoverable">
+              <a href="/blog" aria-label="Jump to blog section" style="--i: 3"
+                >BLOG</a
+              >
+            </li>
+            <li class="hoverable">
+              <a href="" aria-label="Jump to contact section" style="--i: 4"
+                >CONTACT</a
+              >
+            </li>
+          </ul>
+          <div class="link">
+            <h3>Say Hi🫱</h3>
+            <a
+              class="hoverable animated-link"
+              href="mailto:sayhitosuan@gmail.com"
+              >sayhitosuan@gmail.com</a
+            >
+          </div>
+        </div>
+      </div>
+      <main>
+        <section id="home">
+          <div class="hero">
+            <h1>
+              <div class="name-wrapper">
+                <div>
+                  <div class="animated-text" style="--i: 1">Hi, I’m</div>
+                </div>
+                <div>
+                  <div class="animated-text" style="--i: 2">Suan.</div>
+                </div>
+              </div>
+            </h1>
+            <h4 class="text-display">
+              <div class="sub-wrapper">
+                <div class="sub">
+                  <span class="blank">blank</span
+                  ><span class="blank">blank</span> AN EXPLORER
+                </div>
+                <div class="sub">
+                  <span class="blank">blank</span>READY TO DISCOVER THE ENDLESS
+                </div>
+                <div class="sub">POSSIBILITIES OF THE TECHNOLOGY.</div>
+              </div>
+            </h4>
+          </div>
+        </section>
+        <section id="about">
+          <div class="section-title">
+            <h2>About</h2>
+          </div>
+          <div class="main-text text-container">
+            <h3>
+              I am a handyman-like web developer who enjoys tackling challenges
+              and finding resourceful solutions.
+            </h3>
+            <h3>
+              As a developer, I hope to use technology to empower and assist
+              individuals and communities in need.
+            </h3>
+          </div>
+          <div class="text-container">
+            <p class="text-display title">my approach</p>
+            <p class="text-body">
+              I am passionate about building websites and web applications that
+              are not only fully functional, but also deliver a unique and
+              intuitive user experience. I approach every projects with great
+              attention to detail.
+            </p>
+          </div>
+          <div class="text-container">
+            <p class="text-display title">technologies and tools</p>
+            <div class="skills-grid">
+              <p class="text-body">HTML</p>
+              <p class="text-body">React</p>
+              <p class="text-body">Next.js</p>
+              <p class="text-body">CSS</p>
+              <p class="text-body">Sass/SCSS</p>
+              <p class="text-body">styled-components</p>
+              <p class="text-body">JavaScript</p>
+              <p class="text-body">TypeScript</p>
+            </div>
+            <div class="skills-grid">
+              <p class="text-body">Git/GitHub</p>
+              <p class="text-body">npm</p>
+              <p class="text-body">VS Code</p>
+            </div>
+          </div>
+        </section>
+        <section id="project">
+          <div class="section-title">
+            <h2>Projects</h2>
+          </div>
+          <div class="project-container">
+            <div class="project-list">
+              <div class="project-item">
+                <h3 class="project-title text-display">project-managed</h3>
+                <div class="project-detail">
+                  <p class="project-description">Full-stack project management app for daily task and project management.</p>
+                  <div class="detail-grid">
+                    <p class="title text-display">key features</p>
+                    <p class="text-body">CRUD operations (add, read, update, delete) support for tasks and projects.
+                      Authentication using JWT and cookies with an edge runtime.
+                      Utilise Prisma and PostgreSQL for database management.</p>
+                  </div>
+                  <div class="detail-grid">
+                    <p class="title text-display">tech stack</p>
+                    <div class="tech-stack-wrapper">
+                      <div class="tech-item">Next.js</div>
+                      <div class="tech-item">TypeScript</div>
+                      <div class="tech-item">SCSS</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="project-video"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <div class="cursor"></div>
+      <div class="to-top hoverable" role="button">
+        <a href="#top"><p class="text-display">to top</p></a>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
