@@ -11,7 +11,9 @@
     <div class="page-container">
       <div class="header-container">
         <header>
-          <div><a class="logo hoverable text-display">suan choi</a></div>
+          <div>
+            <p><a class="logo hoverable text-display">suan choi</a></p>
+          </div>
           <nav>
             <ul class="text-text-text-display">
               <li><a href="#about" class="nav-link">ABOUT</a></li>
@@ -54,7 +56,7 @@
           <div class="link">
             <h3>Say Hi🫱</h3>
             <a
-              class="hoverable animated-link"
+              class="hoverable animated-email"
               href="mailto:sayhitosuan@gmail.com"
               >sayhitosuan@gmail.com</a
             >
@@ -94,39 +96,41 @@
           </div>
           <div class="main-text text-container">
             <h3>
-              I am a handyman-like web developer who enjoys tackling challenges
-              and finding resourceful solutions.
+              I am a <span class="entry">handyman-like</span> web developer who enjoys tackling  <span class="entry">challenges</span>
+              and finding <span class="entry">resourceful solutions.</span>
             </h3>
             <h3>
-              As a developer, I hope to use technology to empower and assist
+              As a developer, I hope to use technology to <span class="entry">empower and assist </span>
               individuals and communities in need.
             </h3>
           </div>
-          <div class="text-container">
-            <p class="text-display title">my approach</p>
-            <p class="text-body">
-              I am passionate about building websites and web applications that
-              are not only fully functional, but also deliver a unique and
-              intuitive user experience. I approach every projects with great
-              attention to detail.
-            </p>
-          </div>
-          <div class="text-container">
-            <p class="text-display title">technologies and tools</p>
-            <div class="skills-grid">
-              <p class="text-body">HTML</p>
-              <p class="text-body">React</p>
-              <p class="text-body">Next.js</p>
-              <p class="text-body">CSS</p>
-              <p class="text-body">Sass/SCSS</p>
-              <p class="text-body">styled-components</p>
-              <p class="text-body">JavaScript</p>
-              <p class="text-body">TypeScript</p>
+          <div class="sub-text text-container">
+            <div>
+              <p class="text-display title">my commitment</p>
+              <p class="text-body">
+                I am passionate about building websites and web applications
+                that are not only fully functional, but also deliver a unique
+                and intuitive user experience. I approach every projects with
+                great attention to detail.
+              </p>
             </div>
-            <div class="skills-grid">
-              <p class="text-body">Git/GitHub</p>
-              <p class="text-body">npm</p>
-              <p class="text-body">VS Code</p>
+            <div>
+              <p class="text-display title">technologies and tools</p>
+              <div class="skills-grid">
+                <p class="text-body">HTML</p>
+                <p class="text-body">React</p>
+                <p class="text-body">Next.js</p>
+                <p class="text-body">CSS</p>
+                <p class="text-body">Sass/SCSS</p>
+                <p class="text-body">styled-components</p>
+                <p class="text-body">JavaScript</p>
+                <p class="text-body">TypeScript</p>
+              </div>
+              <div class="skills-grid">
+                <p class="text-body">Git/GitHub</p>
+                <p class="text-body">npm</p>
+                <p class="text-body">VS Code</p>
+              </div>
             </div>
           </div>
         </section>
@@ -135,37 +139,16 @@
             <h2>Projects</h2>
           </div>
           <div class="project-container">
-            <div class="project-list">
-              <div class="project-item">
-                <h3 class="project-title text-display">project-managed</h3>
-                <div class="project-detail">
-                  <p class="project-description">Full-stack project management app for daily task and project management.</p>
-                  <div class="detail-grid">
-                    <p class="title text-display">key features</p>
-                    <p class="text-body">CRUD operations (add, read, update, delete) support for tasks and projects.
-                      Authentication using JWT and cookies with an edge runtime.
-                      Utilise Prisma and PostgreSQL for database management.</p>
-                  </div>
-                  <div class="detail-grid">
-                    <p class="title text-display">tech stack</p>
-                    <div class="tech-stack-wrapper">
-                      <div class="tech-item">Next.js</div>
-                      <div class="tech-item">TypeScript</div>
-                      <div class="tech-item">SCSS</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="project-video"></div>
-              </div>
+            <div class="project-list-wrapper">
             </div>
           </div>
         </section>
       </main>
-      <div class="cursor"></div>
-      <div class="to-top hoverable" role="button">
-        <a href="#top"><p class="text-display">to top</p></a>
-      </div>
     </div>
-    <script src="app.js"></script>
+    <div class="cursor"></div>
+    <div class="to-top hoverable" role="button">
+      <a href="#top"><p class="text-display">to top</p></a>
+    </div>
+    <script src="js/app.js" type="module"></script>
   </body>
 </html>
