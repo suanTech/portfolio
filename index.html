@@ -12,14 +12,14 @@
       <div class="header-container">
         <header>
           <div>
-            <p><a class="logo hoverable text-display">suan choi</a></p>
+            <a class="hoverable text-display" href="/"><p>suan choi</p></a>
           </div>
           <nav>
             <ul class="text-text-text-display">
               <li><a href="#about" class="nav-link">ABOUT</a></li>
-              <li><a href="#about" class="nav-link">PROJECT</a></li>
+              <li><a href="#project" class="nav-link">PROJECT</a></li>
               <li><a href="#about" class="nav-link">BLOG</a></li>
-              <li><a href="#about" class="nav-link">CONTACT</a></li>
+              <li><a href="#contact" class="nav-link">CONTACT</a></li>
             </ul>
           </nav>
           <div class="menu-btn hoverable">
@@ -30,13 +30,13 @@
           <div class="menu-btn close hoverable">CLOSE</div>
           <ul class="text-display">
             <li class="hoverable">
-              <a href="/about" aria-label="Jump to about section" style="--i: 1"
+              <a href="#about" aria-label="Jump to about section" style="--i: 1"
                 >ABOUT</a
               >
             </li>
             <li class="hoverable">
               <a
-                href="/project"
+                href="#project"
                 aria-label="Jump to project section"
                 style="--i: 2"
                 >PROJECT</a
@@ -48,7 +48,10 @@
               >
             </li>
             <li class="hoverable">
-              <a href="" aria-label="Jump to contact section" style="--i: 4"
+              <a
+                href="#contact"
+                aria-label="Jump to contact section"
+                style="--i: 4"
                 >CONTACT</a
               >
             </li>
@@ -94,42 +97,47 @@
           <div class="section-title">
             <h2>About</h2>
           </div>
-          <div class="main-text text-container">
-            <h3>
-              I am a <span class="entry">handyman-like</span> web developer who enjoys tackling  <span class="entry">challenges</span>
-              and finding <span class="entry">resourceful solutions.</span>
-            </h3>
-            <h3>
-              As a developer, I hope to use technology to <span class="entry">empower and assist </span>
-              individuals and communities in need.
-            </h3>
-          </div>
-          <div class="sub-text text-container">
-            <div>
-              <p class="text-display title">my commitment</p>
-              <p class="text-body">
-                I am passionate about building websites and web applications
-                that are not only fully functional, but also deliver a unique
-                and intuitive user experience. I approach every projects with
-                great attention to detail.
-              </p>
+          <div>
+            <div class="main-text text-container">
+              <h3>
+                I am a <span class="fade-in-text">handyman-like</span> web
+                developer who enjoys tackling
+                <span class="fade-in-text">challenges</span> and finding
+                <span class="fade-in-text">resourceful solutions.</span>
+              </h3>
+              <h3>
+                As a developer, I hope to use technology to
+                <span class="fade-in-text">empower and assist </span>
+                individuals and communities in need.
+              </h3>
             </div>
-            <div>
-              <p class="text-display title">technologies and tools</p>
-              <div class="skills-grid">
-                <p class="text-body">HTML</p>
-                <p class="text-body">React</p>
-                <p class="text-body">Next.js</p>
-                <p class="text-body">CSS</p>
-                <p class="text-body">Sass/SCSS</p>
-                <p class="text-body">styled-components</p>
-                <p class="text-body">JavaScript</p>
-                <p class="text-body">TypeScript</p>
+            <div class="sub-text text-container">
+              <div>
+                <p class="text-display title">my commitment</p>
+                <p class="text-body">
+                  I am passionate about building websites and web applications
+                  that are not only fully functional, but also deliver a unique
+                  and intuitive user experience. I approach every projects with
+                  great attention to detail.
+                </p>
               </div>
-              <div class="skills-grid">
-                <p class="text-body">Git/GitHub</p>
-                <p class="text-body">npm</p>
-                <p class="text-body">VS Code</p>
+              <div>
+                <p class="text-display title">technologies and tools</p>
+                <div class="skills-grid">
+                  <p class="text-body">HTML</p>
+                  <p class="text-body">React</p>
+                  <p class="text-body">Next.js</p>
+                  <p class="text-body">CSS</p>
+                  <p class="text-body">Sass/SCSS</p>
+                  <p class="text-body">styled-components</p>
+                  <p class="text-body">JavaScript</p>
+                  <p class="text-body">TypeScript</p>
+                </div>
+                <div class="skills-grid">
+                  <p class="text-body">Git/GitHub</p>
+                  <p class="text-body">npm</p>
+                  <p class="text-body">VS Code</p>
+                </div>
               </div>
             </div>
           </div>
@@ -139,11 +147,22 @@
             <h2>Projects</h2>
           </div>
           <div class="project-container">
-            <div class="project-list-wrapper">
-            </div>
+            <div class="project-list-wrapper"></div>
           </div>
         </section>
       </main>
+      <footer>
+        <div id="contact">
+          <!-- <div class="section-title"> -->
+          <div class="marquee">
+            <h1 class="marqueeText"><span>✺Contact</span></h1>
+          </div>
+          <!-- </div> -->
+          <div class="contact-text">
+            <h3>Write me a message</h3>
+          </div>
+        </div>
+      </footer>
     </div>
     <div class="cursor"></div>
     <div class="to-top hoverable" role="button">
@@ -152,3 +171,4 @@
     <script src="js/app.js" type="module"></script>
   </body>
 </html>
+

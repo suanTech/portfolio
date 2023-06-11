@@ -5,7 +5,7 @@ const projects = [
     open: true,
     complete: false,
     description:
-      "Full-stack web application for daily task and project management.",
+      "Full-stack web application for daily task and project management. <i>**work in progress</i>",
     features:
       "CRUD operations (add, read, update, delete) support for tasks and projects. <br>Implement user authorization using JWT. <br> Utilize middleware in the edge runtime to handle session management by saving and accessing cookies.",
     techStack: {
@@ -15,7 +15,7 @@ const projects = [
     video: "project-managed-video.mp4",
     demo: "https://project-managed-app.vercel.app/",
     code: "https://github.com/suanTech/project-managed-app",
-    note: "* To log in as a guest, use email: user@email.com password: password",
+    note: "*** To log in as a guest, use email: user@email.com password: password",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const projects = [
     open: false,
     complete: true,
     description:
-      "Full-stack minimal blog app where users can write posts and comments",
+      "Full-stack minimalist blog app that allows users to publish and share their own blog post while interacting with others using commenting system.",
     features:
       "Implement sign in with google account using NextAuth/Auth0 <br>Enhance error handling with React Query + React Hot Toast",
     techStack: {
@@ -61,7 +61,7 @@ const projects = [
     techStack: {
       main: ["React", "SCSS"],
     },
-    video: "dictionary-video.mp4",
+    video: "random-pw-generator-video.mp4",
     demo: "https://random-pw-generator-app.vercel.app/",
     code: "https://github.com/suanTech/random-pw-generator-app",
   },
