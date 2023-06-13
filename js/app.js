@@ -52,10 +52,16 @@ links.forEach((link) => {
 const menuBtn = document.querySelectorAll(".menu-btn");
 const menuItem = document.querySelectorAll(".mobile-nav li");
 const mobileNav = document.querySelector(".mobile-nav");
+const body = document.body;
 menuBtn.forEach((btn) => btn.addEventListener("click", toggleMenu));
 menuItem.forEach((item) => item.addEventListener("click", closeMenu));
 function toggleMenu() {
   mobileNav.classList.toggle("active");
+  if(mobileNav.classList.contains("active")) {
+    body.style.overflow = "hidden";
+  } else {
+    body.style.overflow = "auto";
+  }
 }
 function closeMenu() {
   mobileNav.classList.remove("active");
@@ -94,10 +100,7 @@ function showElement(el, offset) {
 let marqueeInterval;
 const marqueeText = document.querySelector(".marqueeText");
 observeIntersection(marqueeText, animateMarquee.bind(marqueeText), stopMarquee, null);
-// const allTitles = document.querySelectorAll(".marqueeText");
-// allTitles.forEach((title) =>
-//   observeIntersection(title, animateMarquee.bind(title), stopMarquee, null)
-// );
+
 function animateMarquee() {
   const marquee = this;
   const marqueeText = marquee.querySelector("span");
@@ -162,7 +165,7 @@ fadeInTexts.forEach((text, index) => {
   delay(() => {
     text.style.setProperty("--i", index);
     observeIntersection(text, addActive, null, observerOptions);
-  }, 800 * (index + 1));
+  }, 600 * (index + 1));
 });
 
 // project list
@@ -174,7 +177,7 @@ function displayProjects() {
     const icon = project.open ? "-" : "+";
     html += `
     <div class="project-item" id="project-${project.id}">
-      <h3 class="project-title text-display" id="${project.id}">
+      <h3 class="project-title" id="${project.id}">
         ${project.name}
         <span class="icon">${icon}</span>
       </h3>
@@ -255,7 +258,7 @@ function toggleProjectOpen(projectId, e) {
     delay(
       () =>
         window.scroll({
-          top: top - 50,
+          top: top - 70,
           behavior: "smooth",
           duration: 1500,
         }),

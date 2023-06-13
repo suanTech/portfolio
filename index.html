@@ -23,7 +23,7 @@
             </ul>
           </nav>
           <div class="menu-btn hoverable">
-            <p>MENU</p>
+            <p class="text-display">MENU</p>
           </div>
         </header>
         <div class="mobile-nav">
@@ -59,7 +59,7 @@
           <div class="link">
             <h3>Say Hi🫱</h3>
             <a
-              class="hoverable animated-email"
+              class="hoverable underline-link"
               href="mailto:sayhitosuan@gmail.com"
               >sayhitosuan@gmail.com</a
             >
@@ -95,13 +95,16 @@
         </section>
         <section id="about">
           <div class="section-title">
-            <h2>About</h2>
+            <p>About</p>
           </div>
           <div>
             <div class="main-text text-container">
-              <h3>
+              <h2>
                 I am a <span class="fade-in-text">handyman-like</span> web
-                developer who enjoys tackling
+                developer
+              </h2>
+              <h3>
+                Who enjoys tackling
                 <span class="fade-in-text">challenges</span> and finding
                 <span class="fade-in-text">resourceful solutions.</span>
               </h3>
@@ -143,8 +146,23 @@
           </div>
         </section>
         <section id="project">
-          <div class="section-title">
-            <h2>Projects</h2>
+          <div class="title-wrapper">
+            <div class="section-title">
+              <p>Projects</p>
+            </div>
+            <div class="project-text">
+              <h2>Discover a curated collection of my projects.</h2>
+              <p>
+                This website is a part of my projects, built with the
+                foundational technologies of vanilla JS, HTML, and CSS. Visit
+                <a
+                  class="underline-link hoverable"
+                  href="https://github.com/suanTech/portfolio"
+                  >Github</a
+                >
+                to check out the source code.
+              </p>
+            </div>
           </div>
           <div class="project-container">
             <div class="project-list-wrapper"></div>
@@ -153,13 +171,19 @@
       </main>
       <footer>
         <div id="contact">
-          <!-- <div class="section-title"> -->
           <div class="marquee">
             <h1 class="marqueeText"><span>✺Contact</span></h1>
           </div>
-          <!-- </div> -->
-          <div class="contact-text">
-            <h3>Write me a message</h3>
+          <div class="contact-container">
+            <div class="contact-text">
+              <p>Want to know more about me?</p>
+            </div>
+            <form action="POST" id="contact">
+              <input type="text" name="name" id="name" placeholder="name" />
+              <input type="email" name="email" id="email" placeholder="email" />
+              <textarea name="message" id="message" cols="30" rows="10"></textarea>
+              <button><h2>Get in touch</h2></button>
+            </form>
           </div>
         </div>
       </footer>
@@ -171,4 +195,3 @@
     <script src="js/app.js" type="module"></script>
   </body>
 </html>
-
