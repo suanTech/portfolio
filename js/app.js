@@ -136,8 +136,6 @@ function displayProjects() {
         <div class="project-video-container">
           <video
             muted
-            onmouseover="this.play()"
-            onmouseout="this.pause();this.currentTime=0;"
             class="project-video"
             id="video-${project.id}"
           >
@@ -206,6 +204,14 @@ projectItems.forEach(
     }),
   1200
 );
+const projectVideos = projectWrapper.querySelectorAll(".project-video");
+projectVideos.forEach(video => video.addEventListener("mouseover", (e) => {
+  e.target.play();
+}))
+projectVideos.forEach(video => video.addEventListener("mouseout", () => {
+  e.target.pause();
+  e.target.currentTime=0;
+}))
 
 function toggleProjectOpen(projectId, e) {
   const project = projects.find((project) => project.id === projectId);
