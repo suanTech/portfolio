@@ -1,4 +1,20 @@
-import projects from "./projectsData.js";
+import projectsData from "./projectsData.js";
+let projects = [];
+const body = document.body;
+const cursor = document.querySelector(".cursor");
+const links = document.querySelectorAll(".hoverable");
+const header = document.querySelector("header");
+const toTopBtn = document.querySelector(".to-top");
+const menuBtn = document.querySelectorAll(".menu-btn");
+const menuItem = document.querySelectorAll(".mobile-nav li");
+const mobileNav = document.querySelector(".mobile-nav");
+const heroTexts = document.querySelectorAll(".animated-text");
+const heroSub = document.querySelector(".sub-wrapper");
+const fadeInTexts = document.querySelectorAll(".fade-in-text");
+const entries = document.querySelectorAll(".entry");
+const footer = document.querySelector("#contact");
+const footerHeight = footer.offsetHeight;
+const marquee = document.querySelector(".marquee");
 
 // utils
 function addActive(el) {
@@ -40,14 +56,12 @@ function observeIntersection(el, callback1, callback2, options) {
 }
 
 // cursor
-const cursor = document.querySelector(".cursor");
 document.addEventListener("mousemove", (e) => {
   let x = e.clientX;
   let y = e.clientY;
   cursor.style.transform = `translate(${x - 5}px, ${y - 5}px)`;
   cursor.style.display = "block";
 });
-const links = document.querySelectorAll(".hoverable");
 links.forEach((link) => {
   link.addEventListener("mousemove", (e) => {
     cursor.classList.add("disabled");
@@ -58,25 +72,25 @@ links.forEach((link) => {
 });
 
 // header & to top button appears after scrolling
-const header = document.querySelector("header");
-const toTopBtn = document.querySelector(".to-top");
 onScroll(() => {
   showElement(header, 100);
   showElement(toTopBtn, 300);
 }, "add");
 function showElement(el, offset) {
-  if (window.pageYOffset > offset && window.pageYOffset <= (footer.offsetTop - 100)) {
+  if (
+    window.pageYOffset > offset &&
+    window.pageYOffset <= footer.offsetTop - 100
+  ) {
     addActive(el);
   } else {
     removeActive(el);
   }
 }
+entries.forEach((entry) =>
+  observeIntersection(entry, addActive, null, { rootMargin: "0% 0% -20% 0%" })
+);
 
 // mobile nav toggle
-const menuBtn = document.querySelectorAll(".menu-btn");
-const menuItem = document.querySelectorAll(".mobile-nav li");
-const mobileNav = document.querySelector(".mobile-nav");
-const body = document.body;
 menuBtn.forEach((btn) => btn.addEventListener("click", toggleMenu));
 menuItem.forEach((item) => item.addEventListener("click", closeMenu));
 function toggleMenu() {
@@ -92,38 +106,23 @@ function closeMenu() {
 }
 
 // hero text animation on page load
-const texts = document.querySelectorAll(".animated-text");
-const sub = document.querySelector(".sub-wrapper");
 window.addEventListener("load", showHero);
 function showHero() {
-  delay(() => {
-    texts.forEach((text) => addActive(text));
-  }, 800);
-  delay(() => {
-    addActive(sub);
-  }, 2500);
+  heroTexts.forEach((text) => addActive(text));
+  addActive(heroSub);
 }
 
 // about text animation
-const fadeInTexts = document.querySelectorAll(".fade-in-text");
-const observerOptions = {
-  rootMargin: "40% 0% -10% 0%",
-  threshold: 0.1,
-};
 fadeInTexts.forEach((text, index) => {
-  delay(() => {
-    text.style.setProperty("--i", index);
-    observeIntersection(text, addActive, null, observerOptions);
-  }, 800 * (index + 1));
+  text.style.setProperty("--i", index);
+  observeIntersection(text, addActive, null, { rootMargin: "-40% 0% 0% 0%" });
 });
-const entries = document.querySelectorAll(".entry");
-entries.forEach(entry => observeIntersection(entry, addActive, null, {rootMargin: "-30% 0% 0% 0%"}));
 
 // project list
 const projectWrapper = document.querySelector(".project-list-wrapper");
-
 displayProjects();
 function displayProjects() {
+  projects = projectsData;
   let html = "";
   projects.map((project) => {
     const icon = project.open ? "-" : "+";
@@ -199,11 +198,14 @@ function displayProjects() {
     });
   });
 }
-const projectItems = projectWrapper.querySelectorAll('.project-item')
-projectItems.forEach(item => delay(() => observeIntersection(item, addActive, null, {
-  rootMargin: "-5% 0% 0% 0%",
-}), 1200))
-
+const projectItems = projectWrapper.querySelectorAll(".project-item");
+projectItems.forEach(
+  (item) =>
+    observeIntersection(item, addActive, null, {
+      rootMargin: "0% 0% 10% 0%",
+    }),
+  1200
+);
 
 function toggleProjectOpen(projectId, e) {
   const project = projects.find((project) => project.id === projectId);
@@ -215,7 +217,7 @@ function toggleProjectOpen(projectId, e) {
     let top = e.target.offsetTop;
     delay(async () => {
       for (let i = 0; i <= 1500; i += 60) {
-        window.scroll({
+        window.scrollTo({
           top: top - 70,
           behavior: "smooth",
         });
@@ -233,12 +235,10 @@ function updateProjectTitle(projectId, isOpen) {
   projectTitle.nextElementSibling.classList.toggle("open");
 }
 
-
 // footer
 let marqueeInterval;
 let position = 0;
 let spanCount = 0;
-const marquee = document.querySelector(".marquee");
 observeIntersection(marquee, animateMarquee, stopMarquee, null);
 function animateMarquee() {
   const marqueeText = document.querySelector(".marqueeText");
@@ -279,8 +279,6 @@ window.addEventListener("resize", function () {
   animateMarquee();
 });
 
-const footer = document.querySelector("#contact");
-const footerHeight = footer.offsetHeight;
 function showFooter() {
   onScroll(handleScroll, "add");
 }

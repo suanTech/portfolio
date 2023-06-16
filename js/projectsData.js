@@ -1,4 +1,4 @@
-const projects = [
+const projectsData = [
   {
     id: 1,
     name: "project-managed",
@@ -67,4 +67,4 @@ const projects = [
   },
 ];
 
-export default projects;
+export default projectsData;

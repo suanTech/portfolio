@@ -1,10 +1,10 @@
 @font-face {
   font-family: "sans reg";
-  src: url(/assets/fonts/PPNeueMontreal-Book.woff2) format("woff2");
+  src: url("/assets/fonts/PPNeueMontreal-Book.woff2") format("woff2");
 }
 @font-face {
   font-family: "sans med";
-  src: url(/assets/fonts/PPNeueMontreal-Medium.woff2) format("woff2");
+  src: url("/assets/fonts/PPNeueMontreal-Medium.woff2") format("woff2");
 }
 
 :root {
@@ -327,11 +327,11 @@ section:not(#home) {
   position: absolute;
   right: 0;
   top: 41%;
-  transition: opacity 1.2s var(--secondary-curve);
-  transition-delay: 0.4s;
+  transition: opacity 1.8s var(--secondary-curve);
 }
 .sub-wrapper.active {
   opacity: 1;
+  transition-delay: 2.6s;
 }
 .section-title {
   padding: 0.5rem 0;
@@ -345,10 +345,10 @@ section:not(#home) {
   font-family: "sans med";
   opacity: 0;
   transition: opacity 3s var(--primary-curve);
-  transition-delay: calc(0.8s * var(--i));
 }
 .fade-in-text.active {
   opacity: 1;
+  transition-delay: calc(0.8s * var(--i));
 }
 .entry {
   transition: opacity 2s var(--primary-curve), padding 0.86s;
