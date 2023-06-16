@@ -17,13 +17,22 @@ function onScroll(callback, option) {
     window.removeEventListener("scroll", callback);
   }
 }
+function scrollDelay(ms) {
+  return new Promise((res) => setTimeout(res, ms));
+}
 function observeIntersection(el, callback1, callback2, options) {
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        callback1(entry.target);
-      } else if (callback2) {
-        callback2(entry);
+      if (callback2 !== null) {
+        if (entry.isIntersecting) {
+          callback1(entry.target);
+        } else {
+          callback2(entry.target);
+        }
+      } else {
+        if (entry.isIntersecting) {
+          callback1(entry.target);
+        }
       }
     });
   }, options);
@@ -48,6 +57,21 @@ links.forEach((link) => {
   });
 });
 
+// header & to top button appears after scrolling
+const header = document.querySelector("header");
+const toTopBtn = document.querySelector(".to-top");
+onScroll(() => {
+  showElement(header, 100);
+  showElement(toTopBtn, 300);
+}, "add");
+function showElement(el, offset) {
+  if (window.pageYOffset > offset && window.pageYOffset <= (footer.offsetTop - 100)) {
+    addActive(el);
+  } else {
+    removeActive(el);
+  }
+}
+
 // mobile nav toggle
 const menuBtn = document.querySelectorAll(".menu-btn");
 const menuItem = document.querySelectorAll(".mobile-nav li");
@@ -57,11 +81,11 @@ menuBtn.forEach((btn) => btn.addEventListener("click", toggleMenu));
 menuItem.forEach((item) => item.addEventListener("click", closeMenu));
 function toggleMenu() {
   mobileNav.classList.toggle("active");
-  if(mobileNav.classList.contains("active")) {
-    body.style.overflow = "hidden";
-  } else {
-    body.style.overflow = "auto";
-  }
+}
+if (mobileNav.classList.contains("active")) {
+  body.style.overflow = "hidden";
+} else {
+  body.style.overflow = "auto";
 }
 function closeMenu() {
   mobileNav.classList.remove("active");
@@ -77,47 +101,172 @@ function showHero() {
   }, 800);
   delay(() => {
     addActive(sub);
-  }, 2200);
+  }, 2500);
 }
 
-// header & to top button appears after scrolling
-const header = document.querySelector("header");
-const toTopBtn = document.querySelector(".to-top");
+// about text animation
+const fadeInTexts = document.querySelectorAll(".fade-in-text");
+const observerOptions = {
+  rootMargin: "40% 0% -10% 0%",
+  threshold: 0.1,
+};
+fadeInTexts.forEach((text, index) => {
+  delay(() => {
+    text.style.setProperty("--i", index);
+    observeIntersection(text, addActive, null, observerOptions);
+  }, 600 * (index + 1));
+});
+const entries = document.querySelectorAll(".entry");
+entries.forEach(entry => observeIntersection(entry, addActive, null, {rootMargin: "-30% 0% 0% 0%"}));
 
-onScroll(() => {
-  showElement(header, 100);
-  showElement(toTopBtn, 300);
-}, "add");
-function showElement(el, offset) {
-  if (window.pageYOffset > offset) {
-    addActive(el);
-  } else {
-    removeActive(el);
+// project list
+const projectWrapper = document.querySelector(".project-list-wrapper");
+
+displayProjects();
+function displayProjects() {
+  let html = "";
+  projects.map((project) => {
+    const icon = project.open ? "-" : "+";
+    html += `
+    <div class="project-item" id="project-${project.id}">
+      <h3 class="project-title text-display" id="${project.id}">
+        ${project.name}
+        <span class="icon">${icon}</span>
+      </h3>
+      <div class="project-content-wrapper ${project.open ? "open" : ""}">
+        <div class="project-video-container">
+          <video
+            muted
+            onmouseover="this.play()"
+            onmouseout="this.pause();this.currentTime=0;"
+            class="project-video"
+            id="video-${project.id}"
+          >
+            <source src="/assets/videos/${project.video}" type="video/mp4" />
+          </video>
+          <div class="video-overlay">
+            <h2>►</h2>
+          </div>
+        </div>
+        <div class="project-detail">
+          <p class="project-description">${project.description}</p>
+          <div class="detail-grid">
+            <p class="title text-display">key features</p>
+            <p class="text-body">${project.features}</p>
+          </div>
+          <div class="detail-grid">
+            <p class="title text-display">tech stack</p>
+            <div class="tech-stack-wrapper">
+              ${project.techStack.main
+                .map((item) => `<div class="tech-item main">${item}</div>`)
+                .join("")} 
+              ${
+                project.techStack.sub
+                  ? project.techStack.sub
+                      .map((item) => `<div class="tech-item sub">${item}</div>`)
+                      .join("")
+                  : ""
+              }
+            </div>
+          </div>
+          <div class="project-link-wrapper">
+            <a
+              class="animated-link text-display hoverable"
+              href="${project.demo}"
+              target="_blank"
+            >
+              live demo
+            </a>
+            <a
+              class="animated-link text-display hoverable"
+              href="${project.code}"
+              target="_blank"
+            >
+              Source code
+            </a>
+          </div>
+          ${project.note ? `<p class="text-body note">${project.note}</p>` : ""}
+        </div>
+      </div>
+    </div>
+  `;
+  });
+  projectWrapper.innerHTML = html;
+  const projectTitle = projectWrapper.querySelectorAll(".project-title");
+  projectTitle.forEach((title) => {
+    title.addEventListener("click", (e) => {
+      toggleProjectOpen(parseInt(title.getAttribute("id")), e);
+    });
+  });
+}
+const projectItems = projectWrapper.querySelectorAll('.project-item')
+projectItems.forEach(item => delay(() => observeIntersection(item, addActive, null, {
+  rootMargin: "-5% 0% 0% 0%",
+}), 1200))
+
+
+function toggleProjectOpen(projectId, e) {
+  const project = projects.find((project) => project.id === projectId);
+  if (project) {
+    project.open = !project.open;
+    updateProjectTitle(projectId, project.open);
+  }
+  if (project.open) {
+    let top = e.target.offsetTop;
+    delay(async () => {
+      for (let i = 0; i <= 1500; i += 60) {
+        window.scroll({
+          top: top - 70,
+          behavior: "smooth",
+        });
+        await scrollDelay(5);
+      }
+    }, 500);
   }
 }
+function updateProjectTitle(projectId, isOpen) {
+  const projectTitle = projectWrapper.querySelector(
+    `.project-title[id="${projectId}"]`
+  );
+  const icon = projectTitle.querySelector(".icon");
+  icon.textContent = isOpen ? "-" : "+";
+  projectTitle.nextElementSibling.classList.toggle("open");
+}
 
-// footer show and marquee
+
+// footer
 let marqueeInterval;
-const marqueeText = document.querySelector(".marqueeText");
-observeIntersection(marqueeText, animateMarquee.bind(marqueeText), stopMarquee, null);
-
+let position = 0;
+let spanCount = 0;
+const marquee = document.querySelector(".marquee");
+observeIntersection(marquee, animateMarquee, stopMarquee, null);
 function animateMarquee() {
-  const marquee = this;
-  const marqueeText = marquee.querySelector("span");
-  let position = 0;
-  const marqueeWidth = marquee.offsetWidth;
+  const marqueeText = document.querySelector(".marqueeText");
+  const marqueeSpan = marqueeText.querySelector("span");
+  const marqueeWidth = marqueeSpan.offsetWidth;
   let ratio = window.innerWidth / marqueeWidth;
-  if (ratio === Infinity) {
+  const newSpanCount = Math.ceil(ratio);
+  if (newSpanCount === Infinity) {
     throw new Error("Ratio is Infinity");
   }
-  for (let i = 0; i < ratio + 1; i++) {
-    let text = marqueeText.cloneNode(true);
-    marquee.appendChild(text);
+  if (newSpanCount !== spanCount) {
+    if (newSpanCount > spanCount) {
+      for (let i = spanCount; i < newSpanCount; i++) {
+        let text = marqueeSpan.cloneNode(true);
+        marqueeText.appendChild(text);
+      }
+    } else {
+      for (let i = spanCount - 1; i >= newSpanCount; i--) {
+        marqueeText.removeChild(marqueeText.children[i]);
+      }
+    }
+    spanCount = newSpanCount;
   }
+  clearInterval(marqueeInterval);
   marqueeInterval = setInterval(() => {
     position--;
-    marquee.style.transform = `translate3d(${position}px, 0px, 0px)`;
-    if (position < -(marqueeWidth + 40)) {
+    marqueeText.style.transform = `translate3d(${position}px, 0px, 0px)`;
+    if (position < -marqueeWidth) {
       position += marqueeWidth;
     }
   }, 10);
@@ -125,6 +274,11 @@ function animateMarquee() {
 function stopMarquee() {
   clearInterval(marqueeInterval);
 }
+window.addEventListener("resize", function () {
+  position = 0;
+  animateMarquee();
+});
+
 const footer = document.querySelector("#contact");
 const footerHeight = footer.offsetHeight;
 function showFooter() {
@@ -154,124 +308,4 @@ function translateY(percentage) {
   const translateValue = -35 + percentage;
   const translateY = Math.min(0, translateValue);
   return `translate(0, ${translateY}%) translate3d(0px, 0px, 0px)`;
-}
-
-const fadeInTexts = document.querySelectorAll(".fade-in-text");
-const observerOptions = {
-  rootMargin: "40% 0% -10% 0%",
-  threshold: 0.1,
-};
-fadeInTexts.forEach((text, index) => {
-  delay(() => {
-    text.style.setProperty("--i", index);
-    observeIntersection(text, addActive, null, observerOptions);
-  }, 600 * (index + 1));
-});
-
-// project list
-const projectContainer = document.querySelector(".project-list-wrapper");
-displayProjects();
-function displayProjects() {
-  let html = "";
-  projects.map((project) => {
-    const icon = project.open ? "-" : "+";
-    html += `
-    <div class="project-item" id="project-${project.id}">
-      <h3 class="project-title" id="${project.id}">
-        ${project.name}
-        <span class="icon">${icon}</span>
-      </h3>
-      <div class="project-content-wrapper ${project.open ? 'open' : ''}">
-        <div class="project-video-container">
-          <video
-            muted
-            onmouseover="this.play()"
-            onmouseout="this.pause();this.currentTime=0;"
-            class="project-video"
-            id="video-${project.id}"
-          >
-            <source src="/assets/videos/${project.video}" type="video/mp4" />
-          </video>
-          <div class="video-overlay">
-            <h2>►</h2>
-          </div>
-        </div>
-        <div class="project-detail">
-          <p class="project-description">${project.description}</p>
-          <div class="detail-grid">
-            <p class="title text-display">key features</p>
-            <p class="text-body">${project.features}</p>
-          </div>
-          <div class="detail-grid">
-            <p class="title text-display">tech stack</p>
-            <div class="tech-stack-wrapper">
-              ${project.techStack.main .map((item) => `
-              <div class="tech-item main">${item}</div>
-              `) .join("")} ${ project.techStack.sub ? project.techStack.sub
-              .map((item) => `
-              <div class="tech-item sub">${item}</div>
-              `) .join("") : "" }
-            </div>
-          </div>
-          <div class="project-link-wrapper">
-            <a
-              class="animated-link text-display hoverable"
-              href="${project.demo}"
-              target="_blank"
-            >
-              live demo
-            </a>
-            <a
-              class="animated-link text-display hoverable"
-              href="${project.code}"
-              target="_blank"
-            >
-              Source code
-            </a>
-          </div>
-          ${project.note ? `
-          <p class="text-body note">${project.note}</p>
-          ` : ""}
-        </div>
-      </div>
-    </div>
-  
-  `;
-  });
-  projectContainer.innerHTML = html;
-  const projectTitle = projectContainer.querySelectorAll(".project-title");
-  projectTitle.forEach((title) => {
-    title.addEventListener("click", (e) => {
-      toggleProjectOpen(parseInt(title.getAttribute("id")), e);
-    });
-  });
-}
-
-function toggleProjectOpen(projectId, e) {
-  const project = projects.find((project) => project.id === projectId);
-  if (project) {
-    project.open = !project.open;
-    updateProjectTitle(projectId, project.open);
-  }
-  if (project.open) {
-    let top = e.target.offsetTop;
-    delay(
-      () =>
-        window.scroll({
-          top: top - 70,
-          behavior: "smooth",
-          duration: 1500,
-        }),
-      500
-    );
-  }
-}
-
-function updateProjectTitle(projectId, isOpen) {
-  const projectTitle = projectContainer.querySelector(
-    `.project-title[id="${projectId}"]`
-  );
-  const icon = projectTitle.querySelector(".icon");
-  icon.textContent = isOpen ? "-" : "+";
-  projectTitle.nextElementSibling.classList.toggle("open");
 }

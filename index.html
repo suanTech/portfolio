@@ -18,7 +18,6 @@
             <ul class="text-text-text-display">
               <li><a href="#about" class="nav-link">ABOUT</a></li>
               <li><a href="#project" class="nav-link">PROJECT</a></li>
-              <li><a href="#about" class="nav-link">BLOG</a></li>
               <li><a href="#contact" class="nav-link">CONTACT</a></li>
             </ul>
           </nav>
@@ -43,54 +42,53 @@
               >
             </li>
             <li class="hoverable">
-              <a href="/blog" aria-label="Jump to blog section" style="--i: 3"
-                >BLOG</a
-              >
-            </li>
-            <li class="hoverable">
               <a
                 href="#contact"
                 aria-label="Jump to contact section"
-                style="--i: 4"
+                style="--i: 3"
                 >CONTACT</a
               >
             </li>
           </ul>
           <div class="link">
-            <h3>Say Hi🫱</h3>
-            <a
-              class="hoverable underline-link"
-              href="mailto:sayhitosuan@gmail.com"
-              >sayhitosuan@gmail.com</a
-            >
+            <h4>
+              <a
+                class="hoverable underline-link"
+                href="mailto:sayhitosuan@gmail.com"
+                >sayhitosuan@gmail.com</a
+              >
+            </h4>
+            <h3>
+              <a
+                class="hoverable underline-link"
+                href="mailto:sayhitosuan@gmail.com"
+                >Download Resume</a
+              >
+            </h3>
           </div>
         </div>
       </div>
       <main>
         <section id="home">
           <div class="hero">
-            <h1>
-              <div class="name-wrapper">
-                <div>
-                  <div class="animated-text" style="--i: 1">Hi, I’m</div>
-                </div>
-                <div>
-                  <div class="animated-text" style="--i: 2">Suan.</div>
-                </div>
+            <div class="name-wrapper">
+              <div>
+                <h1 class="animated-text" style="--i: 1">Hi, I’m</h1>
               </div>
-            </h1>
-            <h4 class="text-display">
-              <div class="sub-wrapper">
-                <div class="sub">
-                  <span class="blank">blank</span
-                  ><span class="blank">blank</span> AN EXPLORER
-                </div>
-                <div class="sub">
-                  <span class="blank">blank</span>READY TO DISCOVER THE ENDLESS
-                </div>
-                <div class="sub">POSSIBILITIES OF THE TECHNOLOGY.</div>
+              <div>
+                <h1 class="animated-text" style="--i: 2">Suan.</h1>
               </div>
-            </h4>
+            </div>
+            <div class="sub-wrapper text-display">
+              <p class="sub">
+                <span class="blank">blank</span
+                ><span class="blank">blank</span> AN EXPLORER
+              </p>
+              <p class="sub">
+                <span class="blank">blank</span>READY TO DISCOVER THE ENDLESS
+              </p>
+              <p class="sub">POSSIBILITIES OF THE TECHNOLOGY.</p>
+            </div>
           </div>
         </section>
         <section id="about">
@@ -98,7 +96,7 @@
             <p>About</p>
           </div>
           <div>
-            <div class="main-text text-container">
+            <div class="main-text">
               <h2>
                 I am a <span class="fade-in-text">handyman-like</span> web
                 developer
@@ -107,15 +105,14 @@
                 Who enjoys tackling
                 <span class="fade-in-text">challenges</span> and finding
                 <span class="fade-in-text">resourceful solutions.</span>
-              </h3>
-              <h3>
+                <br>
                 As a developer, I hope to use technology to
                 <span class="fade-in-text">empower and assist </span>
                 individuals and communities in need.
               </h3>
             </div>
             <div class="sub-text text-container">
-              <div>
+              <div class="entry">
                 <p class="text-display title">my commitment</p>
                 <p class="text-body">
                   I am passionate about building websites and web applications
@@ -124,7 +121,7 @@
                   great attention to detail.
                 </p>
               </div>
-              <div>
+              <div class="entry">
                 <p class="text-display title">technologies and tools</p>
                 <div class="skills-grid">
                   <p class="text-body">HTML</p>
@@ -150,9 +147,11 @@
             <div class="section-title">
               <p>Projects</p>
             </div>
-            <div class="project-text">
-              <h2>Discover a curated collection of my projects.</h2>
-              <p>
+            <div class="main-text">
+              <h2 class="entry">
+                Discover a curated collection of my projects.
+              </h2>
+              <p class="entry text-body">
                 This website is a part of my projects, built with the
                 foundational technologies of vanilla JS, HTML, and CSS. Visit
                 <a
@@ -169,28 +168,70 @@
           </div>
         </section>
       </main>
-      <footer>
+      <footer class="text-white">
         <div id="contact">
           <div class="marquee">
             <h1 class="marqueeText"><span>✺Contact</span></h1>
           </div>
-          <div class="contact-container">
+          <div class="contact-wrapper text-light">
             <div class="contact-text">
-              <p>Want to know more about me?</p>
+              <h3>Want to know more about me?</h3>
+              <h2 class="text-white">
+                <a href="mailto:sayhitosuan@gmail.com" class="underline-link"><span>→</span>Get in touch</a>
+              </h2>
             </div>
-            <form action="POST" id="contact">
-              <input type="text" name="name" id="name" placeholder="name" />
-              <input type="email" name="email" id="email" placeholder="email" />
-              <textarea name="message" id="message" cols="30" rows="10"></textarea>
-              <button><h2>Get in touch</h2></button>
-            </form>
+            <div class="contact-link-wrapper">
+              <div class="contact-link">
+                <p>You can find me here too.</p>
+                <ul class="text-white">
+                  <li>
+                    <a
+                      href="https://github.com/suanTech"
+                      target="_blank"
+                      class="underline-link hoverable"
+                      >GitHub</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/sayhitosuan/"
+                      target="_blank"
+                      class="underline-link hoverable"
+                      >LinkedIn</a
+                    >
+                  </li>
+                </ul>
+                <p>
+                  <a href="1.pdf" class="underline-link hoverable"
+                    >Download resume</a
+                  >
+                </p>
+              </div>
+              <div class="contact-link">
+                <p>Jump back to</p>
+                <ul class="text-white">
+                  <li>
+                    <a href="#top" class="underline-link hoverable">Home</a>
+                  </li>
+                  <li>
+                    <a href="#project" class="underline-link hoverable"
+                      >Project</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-wrapper">
+            <p class="text-light">all rights reserved © 2023 Suan Choi</p>
           </div>
         </div>
       </footer>
     </div>
     <div class="cursor"></div>
-    <div class="to-top hoverable" role="button">
-      <a href="#top"><p class="text-display">to top</p></a>
+    <div class="to-top hoverable">
+      <a href="#top" role="button"><p class="text-display">to top</p></a>
     </div>
     <script src="js/app.js" type="module"></script>
   </body>
