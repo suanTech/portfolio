@@ -114,7 +114,7 @@ fadeInTexts.forEach((text, index) => {
   delay(() => {
     text.style.setProperty("--i", index);
     observeIntersection(text, addActive, null, observerOptions);
-  }, 600 * (index + 1));
+  }, 800 * (index + 1));
 });
 const entries = document.querySelectorAll(".entry");
 entries.forEach(entry => observeIntersection(entry, addActive, null, {rootMargin: "-30% 0% 0% 0%"}));
