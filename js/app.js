@@ -87,7 +87,7 @@ function showElement(el, offset) {
   }
 }
 entries.forEach((entry) =>
-  observeIntersection(entry, addActive, null, { rootMargin: "0% 0% -20% 0%" })
+  observeIntersection(entry, addActive, null, { rootMargin: "0% 0% -40% 0%" })
 );
 
 // mobile nav toggle
