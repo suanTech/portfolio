@@ -140,7 +140,6 @@ function displayProjects() {
         <div class="project-video-container">
           <video
             muted
-            playsinline
             class="project-video"
             id="video-${project.id}"
           >
