@@ -47,12 +47,18 @@ body {
   color: black;
   height: 100%;
 }
+.page-container {
+  position: relative;
+}
 .page-container::after {
   content: "";
   display: block;
   z-index: 1;
   pointer-events: none;
   position: fixed;
+  min-height: -moz-available;
+  min-height: fill-available;
+  min-height: -webkit-fill-available;
   min-height: 100vh;
   top: 0;
   left: 0;
@@ -189,23 +195,7 @@ input:active {
 
 /*=== cursor & to top button ===*/
 .cursor {
-  opacity: 1;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  mix-blend-mode: difference;
-  background-color: white;
-  transition: 350ms all var(--secondary-curve);
-  pointer-events: none;
-  will-change: transform;
-}
-.cursor.disabled {
-  opacity: 0;
-  visibility: hidden;
+  display: none;
 }
 .to-top {
   position: fixed;
@@ -235,6 +225,9 @@ input:active {
   text-align: left;
   right: -100vw;
   width: 100vw;
+  height: -moz-available;
+  height: fill-available;
+  height: -webkit-fill-available;
   height: 100vh;
   padding-top: 15%;
   color: var(--color-bg);
@@ -286,6 +279,9 @@ section:not(#home) {
   padding: var(--section-padding);
 }
 #home {
+  height: -moz-available;
+  height: fill-available;
+  height: -webkit-fill-available;
   height: 100vh;
   padding: 2rem var(--body-px) 0;
   display: flex;
@@ -326,7 +322,7 @@ section:not(#home) {
   width: max-content;
   position: absolute;
   right: 0;
-  top: 41%;
+  top: 42%;
   transition: opacity 1.8s var(--secondary-curve);
 }
 .sub-wrapper.active {
@@ -492,11 +488,15 @@ footer {
   display: block;
   overflow: hidden;
   background-color: var(--color-accent);
+  min-height: -moz-available;
+  min-height: fill-available;
+  min-height: -webkit-fill-available;
+  min-height: 100vh;
 }
 #contact {
   position: relative;
   padding-top: var(--body-font-size);
-  min-height: 100vh;
+
 }
 #contact .underline-link {
   --color: white;
@@ -552,6 +552,29 @@ footer {
   :root {
     --body-px: 3rem;
     --body-font-size: 1.15rem;
+  }
+  h4 {
+    font-size: var(--body-font-size);
+  }
+  .cursor {
+    display: block;
+    opacity: 1;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    background-color: white;
+    transition: 350ms all var(--secondary-curve);
+    pointer-events: none;
+    will-change: transform;
+  }
+  .cursor.disabled {
+    opacity: 0;
+    visibility: hidden;
   }
   .menu-btn,
   .mobile-nav {

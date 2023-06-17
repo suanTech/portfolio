@@ -95,12 +95,16 @@ menuBtn.forEach((btn) => btn.addEventListener("click", toggleMenu));
 menuItem.forEach((item) => item.addEventListener("click", closeMenu));
 function toggleMenu() {
   mobileNav.classList.toggle("active");
+  disableScroll();
 }
-if (mobileNav.classList.contains("active")) {
-  body.style.overflow = "hidden";
-} else {
-  body.style.overflow = "auto";
+function disableScroll() {
+  if (mobileNav.classList.contains("active")) {
+    body.style.overflow = "hidden";
+  } else {
+    body.style.overflow = "auto";
+  }
 }
+
 function closeMenu() {
   mobileNav.classList.remove("active");
 }
@@ -209,7 +213,7 @@ const projectVideos = projectWrapper.querySelectorAll(".project-video");
 projectVideos.forEach(video => video.addEventListener("mouseover", (e) => {
   e.target.play();
 }))
-projectVideos.forEach(video => video.addEventListener("mouseout", () => {
+projectVideos.forEach(video => video.addEventListener("mouseout", (e) => {
   e.target.pause();
   e.target.currentTime=0;
 }))
