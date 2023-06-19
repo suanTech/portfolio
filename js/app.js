@@ -11,7 +11,7 @@ const mobileNav = document.querySelector(".mobile-nav");
 const heroTexts = document.querySelectorAll(".animated-text");
 const heroSub = document.querySelector(".sub-wrapper");
 const fadeInTexts = document.querySelectorAll(".fade-in-text");
-const entries = document.querySelectorAll(".entry");
+const observerEntries = document.querySelectorAll(".entry");
 const footer = document.querySelector("#contact");
 const footerHeight = footer.offsetHeight;
 const marquee = document.querySelector(".marquee");
@@ -36,6 +36,16 @@ function onScroll(callback, option) {
 function scrollDelay(ms) {
   return new Promise((res) => setTimeout(res, ms));
 }
+function showElement(el, offset) {
+  if (
+    window.pageYOffset > offset &&
+    window.pageYOffset <= footer.offsetTop - 100
+  ) {
+    addActive(el);
+  } else {
+    removeActive(el);
+  }
+}
 function observeIntersection(el, callback1, callback2, options) {
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
@@ -54,6 +64,9 @@ function observeIntersection(el, callback1, callback2, options) {
   }, options);
   observer.observe(el);
 }
+observerEntries.forEach((entry) =>
+  observeIntersection(entry, addActive, null, { rootMargin: "0% 0% -40% 0%" })
+);
 
 // cursor
 document.addEventListener("mousemove", (e) => {
@@ -76,19 +89,6 @@ onScroll(() => {
   showElement(header, 100);
   showElement(toTopBtn, 300);
 }, "add");
-function showElement(el, offset) {
-  if (
-    window.pageYOffset > offset &&
-    window.pageYOffset <= footer.offsetTop - 100
-  ) {
-    addActive(el);
-  } else {
-    removeActive(el);
-  }
-}
-entries.forEach((entry) =>
-  observeIntersection(entry, addActive, null, { rootMargin: "0% 0% -40% 0%" })
-);
 
 // mobile nav toggle
 menuBtn.forEach((btn) => btn.addEventListener("click", toggleMenu));
@@ -104,7 +104,6 @@ function disableScroll() {
     body.style.overflow = "auto";
   }
 }
-
 function closeMenu() {
   mobileNav.classList.remove("active");
 }
