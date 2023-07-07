@@ -16,7 +16,7 @@
   --font-hero: "sans med";
   --primary-curve: cubic-bezier(0.62, 0.05, 0.01, 0.99);
   --secondary-curve: cubic-bezier(0.165, 0.84, 0.44, 1);
-  --color-bg: rgb(244, 248, 248);
+  --color-bg: #f4f8f8;
   --color-gradient: transparent, #e6eaec;
   --color-accent: #2c3233;
   --color-gray: #59595b;
@@ -383,7 +383,9 @@ section:not(#home) {
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  row-gap: .5rem;
   grid-row: auto;
+  padding-bottom: .5rem;
 }
 .project-item {
   padding: var(--body-font-size) 0;
@@ -530,6 +532,9 @@ footer {
   flex-direction: column;
   gap: var(--body-font-size);
 }
+.contact-link li {
+  line-height: 200%;
+}
 .contact-link-wrapper {
   display: grid;
   grid-template-columns: 50% 45%;
@@ -652,7 +657,7 @@ footer {
   }
   #about,
   #project .title-wrapper {
-    grid-template-columns: 30% 42%;
+    grid-template-columns: 52% 48%;
   }
   #project .project-container {
     margin-left: 0;
