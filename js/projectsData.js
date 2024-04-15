@@ -1,6 +1,39 @@
 const projectsData = [
   {
     id: 1,
+    name: "Planidea",
+    open: true,
+    complete: true,
+    description: "Planidea was built to bridge the gap between skilled individuals looking to share their expertise and learners eager to engage.",
+    features:
+      "Successfully planned, implemented, and tested the project as a group within the She Codes Plus Cohort 2023/24, utilising agile methodology throughout the entire development process.",
+    techStack: {
+      main: ["Django", "Python", "JavaScript", "React"],
+      sub: ["TailwindCSS"]
+    },
+    video: "planidea.mp4",
+    demo: "https://planidea.netlify.app/",
+    code: "https://github.com/SheCodesAus/2024_exception_al_frontend",
+    note: "* To log in as a admin, use username: admin_2 password: Password1!<br><i>**This project was the final group project for the She Codes Plus 2023/24.</i>",
+  },
+  {
+    id: 2,
+    name: "Hackeraiser",
+    open: true,
+    complete: true,
+    description: "A crowdfunding platform to support and share fun tech ideas/projects",
+    features:
+      "Full-Stack Development; Built using Django Rest Framework (DRF) for the backend and React for the frontend.<br>Project/pledge submission based on user permission.",
+    techStack: {
+      main: ["Python", "Django", "JavaScript", "React"],
+      sub: [ "CSS"]
+    },
+    video: "hackeraiser.mp4",
+    demo: "https://hackeraiser.netlify.app/",
+    code: "https://github.com/suanTech/crowdfunding-frontend",
+  },
+  {
+    id: 3,
     name: "project-managed",
     open: true,
     complete: false,
@@ -18,7 +51,7 @@ const projectsData = [
     note: "*** To log in as a guest, use email: user@email.com password: password",
   },
   {
-    id: 2,
+    id: 4,
     name: "tiny post",
     open: false,
     complete: true,
@@ -35,7 +68,7 @@ const projectsData = [
     code: "https://github.com/suanTech/tiny-post-app",
   },
   {
-    id: 3,
+    id: 5,
     name: "dictionary web app",
     open: false,
     complete: true,
@@ -51,7 +84,7 @@ const projectsData = [
     code: "https://github.com/suanTech/react-dictionary-app",
   },
   {
-    id: 4,
+    id: 6,
     name: "random password generator",
     open: false,
     complete: true,
